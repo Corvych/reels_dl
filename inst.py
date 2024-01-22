@@ -4,9 +4,9 @@ import re
 import requests
 
 async def get_reel_id(link):
-    match = re.findall(r"https:\/\/www\.instagram\.com\/(reel|reels)\/(.*)\/(.*)", link)
-    reel_id = str(match[0][1])
-    if match != None: 
+    if re.fullmatch(r"https:\/\/www\.instagram\.com\/(reel|reels)\/(.*)\/(.*)", link):
+        match = re.findall(r"https:\/\/www\.instagram\.com\/(reel|reels)\/(.*)\/(.*)", link)
+        reel_id = str(match[0][1])
         return reel_id
     else:
         return "err"
